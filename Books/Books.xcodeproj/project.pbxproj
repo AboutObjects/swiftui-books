@@ -19,6 +19,8 @@
 		B44872ED2631C46E0003680C /* BooksQuerying.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872EC2631C46E0003680C /* BooksQuerying.swift */; };
 		B44872F12631E7D20003680C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872F02631E7D20003680C /* Book.swift */; };
 		B44872F52631FBE20003680C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872F42631FBE20003680C /* APIClient.swift */; };
+		B44872F9263206160003680C /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872F8263206160003680C /* Author.swift */; };
+		B44872FD263232840003680C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872FC263232840003680C /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		B44872EC2631C46E0003680C /* BooksQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksQuerying.swift; sourceTree = "<group>"; };
 		B44872F02631E7D20003680C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		B44872F42631FBE20003680C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		B44872F8263206160003680C /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		B44872FC263232840003680C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 				B44872CE2631C2D20003680C /* BooksModel.h */,
 				B44872EC2631C46E0003680C /* BooksQuerying.swift */,
 				B44872F02631E7D20003680C /* Book.swift */,
+				B44872FC263232840003680C /* DataStore.swift */,
+				B44872F8263206160003680C /* Author.swift */,
 				B44872F42631FBE20003680C /* APIClient.swift */,
 				B44872CF2631C2D20003680C /* Info.plist */,
 			);
@@ -319,6 +325,8 @@
 			files = (
 				B44872F12631E7D20003680C /* Book.swift in Sources */,
 				B44872ED2631C46E0003680C /* BooksQuerying.swift in Sources */,
+				B44872F9263206160003680C /* Author.swift in Sources */,
+				B44872FD263232840003680C /* DataStore.swift in Sources */,
 				B44872F52631FBE20003680C /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

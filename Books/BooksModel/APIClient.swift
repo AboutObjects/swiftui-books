@@ -4,14 +4,12 @@
 import Foundation
 import Combine
 
-private let decoder = JSONDecoder()
-private let yahooFinanceUrlString = "https://query1.finance.yahoo.com/v7/finance/quote?symbols="
-
-final class APIClient
+public final class APIClient
 {
+    let decoder = JSONDecoder()
     var subscriptions: Set<AnyCancellable> = []
     
-    func execute(query: BooksQuery, receiveBooks: @escaping ([Book]) -> Void) {
+    public func execute(query: BooksQuery, receiveBooks: @escaping ([Book]) -> Void) {
         guard let url = query.url else {
             fatalError("Unable to obtain URL from query \(query)")
         }

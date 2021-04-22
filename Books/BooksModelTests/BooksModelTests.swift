@@ -56,4 +56,37 @@ class BooksModelTests: XCTestCase {
         
         wait(for: [expectation], timeout: 2)
     }
+
+    func testAuthors() {
+        let expectation = XCTestExpectation()
+        
+        let store = DataStore()
+        let client = APIClient()
+        let query = BooksQuery(searchTerms: [term3])
+        client.execute(query: query) { books in
+            store.set(books: books)
+            let authors = store.authors
+            print(authors)
+            XCTAssert(!authors.isEmpty)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2)
+    }
+
+
+    func testFetchAuthors() {
+        let expectation = XCTestExpectation()
+        
+        let store = DataStore()
+        store.query = BooksQuery(searchTerms: [term3])
+        store.fetch() { books in
+            let authors = store.authors
+            print(authors)
+            XCTAssert(!authors.isEmpty)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2)
+    }
 }
