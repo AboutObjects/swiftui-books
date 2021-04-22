@@ -17,6 +17,8 @@
 		B44872E12631C2D20003680C /* BooksModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44872CC2631C2D20003680C /* BooksModel.framework */; };
 		B44872E22631C2D20003680C /* BooksModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B44872CC2631C2D20003680C /* BooksModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B44872ED2631C46E0003680C /* BooksQuerying.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872EC2631C46E0003680C /* BooksQuerying.swift */; };
+		B44872F12631E7D20003680C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872F02631E7D20003680C /* Book.swift */; };
+		B44872F52631FBE20003680C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872F42631FBE20003680C /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		B44872DB2631C2D20003680C /* BooksModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksModelTests.swift; sourceTree = "<group>"; };
 		B44872DD2631C2D20003680C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B44872EC2631C46E0003680C /* BooksQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksQuerying.swift; sourceTree = "<group>"; };
+		B44872F02631E7D20003680C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		B44872F42631FBE20003680C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 			children = (
 				B44872CE2631C2D20003680C /* BooksModel.h */,
 				B44872EC2631C46E0003680C /* BooksQuerying.swift */,
+				B44872F02631E7D20003680C /* Book.swift */,
+				B44872F42631FBE20003680C /* APIClient.swift */,
 				B44872CF2631C2D20003680C /* Info.plist */,
 			);
 			path = BooksModel;
@@ -311,7 +317,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44872F12631E7D20003680C /* Book.swift in Sources */,
 				B44872ED2631C46E0003680C /* BooksQuerying.swift in Sources */,
+				B44872F52631FBE20003680C /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
