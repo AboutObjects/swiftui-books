@@ -6,8 +6,8 @@ import Combine
 
 public final class APIClient
 {
-    let decoder = JSONDecoder()
-    var subscriptions: Set<AnyCancellable> = []
+    private let decoder = JSONDecoder()
+    private var subscriptions: Set<AnyCancellable> = []
     
     public func execute(query: BooksQuery, receiveBooks: @escaping ([Book]) -> Void) {
         guard let url = query.url else {

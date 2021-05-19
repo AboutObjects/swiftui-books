@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B44872B82631C2400003680C /* BooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872B72631C2400003680C /* BooksApp.swift */; };
-		B44872BA2631C2400003680C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872B92631C2400003680C /* ContentView.swift */; };
+		B44872BA2631C2400003680C /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872B92631C2400003680C /* SearchResultsView.swift */; };
 		B44872BC2631C2420003680C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44872BB2631C2420003680C /* Assets.xcassets */; };
 		B44872BF2631C2420003680C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44872BE2631C2420003680C /* Preview Assets.xcassets */; };
 		B44872D52631C2D20003680C /* BooksModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44872CC2631C2D20003680C /* BooksModel.framework */; };
@@ -21,6 +21,8 @@
 		B44872F52631FBE20003680C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872F42631FBE20003680C /* APIClient.swift */; };
 		B44872F9263206160003680C /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872F8263206160003680C /* Author.swift */; };
 		B44872FD263232840003680C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872FC263232840003680C /* DataStore.swift */; };
+		B4935A9426556828007B1913 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4935A9326556828007B1913 /* ActivityIndicator.swift */; };
+		B4935A962655894C007B1913 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4935A952655894C007B1913 /* BooksViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,7 @@
 /* Begin PBXFileReference section */
 		B44872B42631C2400003680C /* Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44872B72631C2400003680C /* BooksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksApp.swift; sourceTree = "<group>"; };
-		B44872B92631C2400003680C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B44872B92631C2400003680C /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		B44872BB2631C2420003680C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B44872BE2631C2420003680C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B44872C02631C2420003680C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		B44872F42631FBE20003680C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B44872F8263206160003680C /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		B44872FC263232840003680C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		B4935A9326556828007B1913 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		B4935A952655894C007B1913 /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				B44872B72631C2400003680C /* BooksApp.swift */,
-				B44872B92631C2400003680C /* ContentView.swift */,
+				B44872B92631C2400003680C /* SearchResultsView.swift */,
+				B4935A9326556828007B1913 /* ActivityIndicator.swift */,
 				B44872BB2631C2420003680C /* Assets.xcassets */,
 				B44872C02631C2420003680C /* Info.plist */,
 				B44872BD2631C2420003680C /* Preview Content */,
@@ -155,6 +160,7 @@
 				B44872EC2631C46E0003680C /* SearchQuery.swift */,
 				B44872F02631E7D20003680C /* Book.swift */,
 				B44872FC263232840003680C /* DataStore.swift */,
+				B4935A952655894C007B1913 /* BooksViewModel.swift */,
 				B44872F8263206160003680C /* Author.swift */,
 				B44872F42631FBE20003680C /* APIClient.swift */,
 				B44872CF2631C2D20003680C /* Info.plist */,
@@ -314,7 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B44872BA2631C2400003680C /* ContentView.swift in Sources */,
+				B44872BA2631C2400003680C /* SearchResultsView.swift in Sources */,
+				B4935A9426556828007B1913 /* ActivityIndicator.swift in Sources */,
 				B44872B82631C2400003680C /* BooksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44872F12631E7D20003680C /* Book.swift in Sources */,
+				B4935A962655894C007B1913 /* BooksViewModel.swift in Sources */,
 				B44872ED2631C46E0003680C /* SearchQuery.swift in Sources */,
 				B44872F9263206160003680C /* Author.swift in Sources */,
 				B44872FD263232840003680C /* DataStore.swift in Sources */,
@@ -486,7 +494,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Books/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Books/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -508,7 +516,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Books/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Books/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

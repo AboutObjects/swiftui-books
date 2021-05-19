@@ -15,7 +15,7 @@ public struct BookSearchResult: Codable {
     let books: [Book]
 }
 
-public struct Book: Codable, Identifiable {
+public struct Book: Codable, Identifiable, Equatable {
     public let id: Int
     public let title: String
     public let authorId: Int

@@ -2,12 +2,16 @@
 // See LICENSE.txt for this project's licensing information.
 
 import SwiftUI
+import BooksModel
 
 @main
 struct BooksApp: App {
+    @StateObject var booksViewModel = BooksViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchResultsView()
+                .environmentObject(booksViewModel)
         }
     }
 }

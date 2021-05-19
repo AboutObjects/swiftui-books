@@ -14,6 +14,7 @@ public protocol SearchQuery {
     var explicit: Bool { get }
     var country: String { get }
     var fetchLimit: Int { get }
+    var fetchOffset: Int { get }
     var searchTerms: [String] { get }
     
     var queryString: String { get }
@@ -27,7 +28,8 @@ public struct BooksQuery: SearchQuery {
     public let media = "ebook"
     public let explicit = false
     public var country = "us"
-    public var fetchLimit: Int = 100
+    public var fetchLimit: Int = 25
+    public var fetchOffset: Int = 0
     public var searchTerms: [String]
     
     public var searchTermsString: String {
@@ -43,6 +45,7 @@ public struct BooksQuery: SearchQuery {
          "explicit=\(explicit ? "Yes" : "No")",
          "country=\(country)",
          "limit=\(fetchLimit)",
+         "offset=\(fetchOffset)",
          "term=\(searchTermsString)"]
     }
     
