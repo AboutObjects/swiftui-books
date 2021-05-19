@@ -21,7 +21,7 @@ public struct LoadingIndicator: View {
         HStack() {
             HStack {
                 Text("Loading")
-                    .font(.system(size: 20, weight: .semibold)
+                    .font(.system(size: 17, weight: .semibold)
                             .italic())
                     .foregroundColor(.secondary)
                     .padding(.trailing, 4)

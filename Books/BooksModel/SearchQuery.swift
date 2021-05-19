@@ -20,7 +20,7 @@ public protocol SearchQuery {
     var queryString: String { get }
     var url: URL? { get }
     
-    init(searchTerms: [String])
+    init(searchTerms: [String], offset: Int)
 }
 
 public struct BooksQuery: SearchQuery {
@@ -59,7 +59,8 @@ public struct BooksQuery: SearchQuery {
         return URL(string: "\(Self.searchUrlString)?\(query)")
     }
     
-    public init(searchTerms: [String]) {
+    public init(searchTerms: [String], offset: Int = 0) {
         self.searchTerms = searchTerms
+        self.fetchOffset = offset
     }
 }

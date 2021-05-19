@@ -6,16 +6,40 @@ import BooksModel
 
 struct SearchResultsView: View {
     @EnvironmentObject var viewModel: BooksViewModel
+    
     var body: some View {
         List {
             ForEach(viewModel.books) { book in
-                Text(book.title)
-                .font(.title3)
-                .lineLimit(1)
+                BookCell(text: book.title)
+            }
+            if !viewModel.isAtEnd {
+                LoadingIndicatorCell()
+                    .onAppear() { viewModel.next() }
             }
         }
+        .font(.title3)
+        .lineLimit(1)
         .listStyle(PlainListStyle())
         .onAppear { viewModel.search() }
+    }
+}
+
+struct BookCell: View {
+    var text: String
+    var body: some View {
+        Text(text)
+    }
+}
+
+struct LoadingIndicatorCell: View {
+    @EnvironmentObject var viewModel: BooksViewModel
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            LoadingIndicator()
+            Spacer()
+        }
     }
 }
 
