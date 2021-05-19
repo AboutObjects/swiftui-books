@@ -13,7 +13,7 @@ public class Author: Identifiable, CustomStringConvertible {
     }
     
     public var description: String {
-        books.reduce("\n\nid: \(id), name: \(name)\n===================\n") { "\($0)\t\($1.id), \($1.title)\n" }
+        books.reduce("\n\nid: \(id), name: \(name)\n===================\n") { "\($0)\tid: \($1.id), title: \($1.title)\n" }
     }
     
     init(id: Int, name: String) {

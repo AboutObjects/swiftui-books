@@ -9,7 +9,7 @@ public extension String {
     static let ampersand = "&"
 }
 
-public protocol BooksQuerying {
+public protocol SearchQuery {
     var media: String { get }
     var explicit: Bool { get }
     var country: String { get }
@@ -22,8 +22,8 @@ public protocol BooksQuerying {
     init(searchTerms: [String])
 }
 
-public struct BooksQuery: BooksQuerying {
-    public static let searchUrlString = "https://itunes.apple.com/search"
+public struct BooksQuery: SearchQuery {
+    static let searchUrlString = "https://itunes.apple.com/search"
     public let media = "ebook"
     public let explicit = false
     public var country = "us"

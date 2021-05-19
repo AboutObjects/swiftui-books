@@ -39,7 +39,7 @@ public class DataStore
         self.books = books
     }
     
-    public func fetch(onCompletion: @escaping ([Book]) -> Void) {
+    public func search(onCompletion: @escaping ([Book]) -> Void) {
         guard let query = query else {
             fatalError("Query cannot be nil.")
         }

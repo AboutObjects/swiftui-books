@@ -75,12 +75,12 @@ class BooksModelTests: XCTestCase {
     }
 
 
-    func testFetchAuthors() {
+    func testSearchForAuthors() {
         let expectation = XCTestExpectation()
         
         let store = DataStore()
         store.query = BooksQuery(searchTerms: [term3])
-        store.fetch() { books in
+        store.search() { books in
             let authors = store.authors
             print(authors)
             XCTAssert(!authors.isEmpty)
