@@ -49,7 +49,7 @@ public class DataStore
         }
         
         apiClient.execute(query: query) { books in
-            self.books = books
+            self.books.append(contentsOf: books)
             receive(books)
         }
     }

@@ -28,6 +28,7 @@ public struct Book: Codable, Identifiable, Equatable {
     public let averageRating: Double?
     public let ratingCount: Int?
     public let artworkUrl: URL
+    public let detailsUrl: URL
     
     private enum CodingKeys: String, CodingKey {
         case id = "trackId"
@@ -42,6 +43,7 @@ public struct Book: Codable, Identifiable, Equatable {
         case averageRating = "averageUserRating"
         case ratingCount = "userRatingCount"
         case artworkUrl = "artworkUrl100"
+        case detailsUrl = "trackViewUrl"
     }
     
     public init(from decoder: Decoder) throws {
@@ -59,5 +61,6 @@ public struct Book: Codable, Identifiable, Equatable {
         averageRating = try container.decodeIfPresent(Double.self, forKey: .averageRating)
         ratingCount = try container.decodeIfPresent(Int.self, forKey: .ratingCount)
         artworkUrl = try container.decode(URL.self, forKey: .artworkUrl)
+        detailsUrl = try container.decode(URL.self, forKey: .detailsUrl)
     }
 }

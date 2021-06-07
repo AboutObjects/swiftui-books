@@ -7,25 +7,38 @@ import Combine
 public final class APIClient
 {
     private let decoder = JSONDecoder()
-    private var subscriptions: Set<AnyCancellable> = []
+    private var subscriptions: Dictionary<String, AnyCancellable> = [:]
     
     public func execute(query: BooksQuery, receiveBooks: @escaping ([Book]) -> Void) {
-        guard let url = query.url else {
+        guard let url = query.url, let queryString = url.query else {
             fatalError("Unable to obtain URL from query \(query)")
         }
         
-        subscriptions.removeAll()
-        
-        URLSession.shared.dataTaskPublisher(for: url)
+        let subscription = URLSession.shared.dataTaskPublisher(for: url)
             .map { data, response in data }
             .decode(type: BookSearchResult.self, decoder: decoder)
             .compactMap { searchResult in searchResult.books }
             .receive(on: DispatchQueue.main)
             .sink { completionType in
-                print("\(completionType) loading quotes")
+                print("\(completionType) loading books")
+                self.subscriptions.removeValue(forKey: queryString)
             } receiveValue: { books in
                 receiveBooks(books)
             }
-            .store(in: &subscriptions)
+        
+        subscriptions[queryString] = subscription
+    }
+    
+    public func fetch(url: URL, receiveData: @escaping (Data) -> Void) {
+        let subscription = URLSession.shared.dataTaskPublisher(for: url)
+            .map { data, response in data }
+            .receive(on: DispatchQueue.main)
+            .sink { completionType in
+                self.subscriptions.removeValue(forKey: url.path)
+            } receiveValue: { data in
+                receiveData(data)
+            }
+        
+        subscriptions[url.path] = subscription
     }
 }
