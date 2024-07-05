@@ -32,7 +32,8 @@ public struct LoadingIndicator: View {
                         .frame(width: 6, height: 6)
                         .opacity(isAnimating ? index == currentIndex ? 1.0 : 0.2 : 1)
                         .scaleEffect(index == currentIndex ? 1.5 : 1.0)
-                        .animation(.easeInOut(duration: Self.duration * Double(count - 2)))
+                        .animation(.easeInOut(duration: Self.duration * Double(count - 2)),
+                                   value: currentIndex)
                 }
             }
             .onReceive(timerPublisher) { _ in

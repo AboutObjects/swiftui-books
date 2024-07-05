@@ -59,6 +59,12 @@ class BooksModelTests: XCTestCase {
         XCTAssertNotEqual(book1, book3)
     }
 
+    func testExecuteAsyncQuery() async throws {
+        let query = BooksQuery(searchTerms: [term3])
+        let books = try await APIClient().execute(query: query)
+        XCTAssert(!books.isEmpty)
+    }
+    
     func testExecuteQuery() {
         let expectation = XCTestExpectation()
         

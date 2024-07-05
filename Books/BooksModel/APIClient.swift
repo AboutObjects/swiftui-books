@@ -9,6 +9,24 @@ public final class APIClient
     private let decoder = JSONDecoder()
     private var subscriptions: Dictionary<String, AnyCancellable> = [:]
     
+    public func execute(query: BooksQuery) async throws -> [Book] {
+        guard let url = query.url else {
+            fatalError("Unable to obtain URL from query \(query)")
+        }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let result = try decoder.decode(BookSearchResult.self, from: data)        
+        return result.books.compactMap { $0 }
+    }
+    
+    public func fetch(url: URL) async throws -> Data {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return data
+    }
+}
+
+// MARK: - Combine version
+extension APIClient {
+    
     public func execute(query: BooksQuery, receiveBooks: @escaping ([Book]) -> Void) {
         guard let url = query.url, let queryString = url.query else {
             fatalError("Unable to obtain URL from query \(query)")

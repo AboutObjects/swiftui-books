@@ -5,18 +5,21 @@ import SwiftUI
 import BooksModel
 
 struct SearchResultsView: View {
-    @EnvironmentObject var viewModel: BooksViewModel
-    
+    @Environment(BooksViewModel.self) var viewModel
+
     var body: some View {
-        List {
-            ForEach(viewModel.bookViewModels, id: \.book.id) { bookViewModel in
-                BookCell(bookViewModel: bookViewModel)
+        NavigationStack {
+            List {
+                ForEach(viewModel.books, id: \.id) { book in
+                    BookCell(book: book)
+                }
+                
+                if !viewModel.isAtEnd {
+                    LoadingIndicatorCell()
+                        .onAppear() { viewModel.next() }
+                }
             }
-            
-            if !viewModel.isAtEnd {
-                LoadingIndicatorCell()
-                    .onAppear() { viewModel.next() }
-            }
+            .navigationTitle("Book Search")
         }
         .font(.title3)
         .lineLimit(1)
@@ -26,13 +29,13 @@ struct SearchResultsView: View {
 }
 
 struct BookCell: View {
-    @ObservedObject var bookViewModel: BookViewModel
+    var book: Book
     
     var body: some View {
         HStack(spacing: 18) {
             Group {
-                if bookViewModel.image != nil {
-                    Image(uiImage: bookViewModel.image!).resizable()
+                if let image = book.image {
+                    Image(uiImage: image).resizable()
                 } else {
                     Image(systemName: "photo")
                         .resizable()
@@ -44,27 +47,25 @@ struct BookCell: View {
             .frame(maxWidth: 80)
             
             VStack(alignment: .leading) {
-                Text(bookViewModel.book.title)
+                Text(book.title)
                     .font(.headline)
-                Text(bookViewModel.book.authorName)
-                    .font(.subheadline)
-                Text(bookViewModel.book.formattedPrice)
-                    .font(.subheadline)
-                RatingView(bookViewModel: bookViewModel)
+                Text(book.authorName)
+                Text(book.formattedPrice)
+                RatingView(book: book)
             }
+            .font(.subheadline)
         }
     }
 }
 
 struct RatingView: View {
-    @ObservedObject var bookViewModel: BookViewModel
-    let maxRating = 5
-    var rating: CGFloat { CGFloat(bookViewModel.rating) }
+    var book: Book
+    var rating: CGFloat { CGFloat(book.rating) }
     
     var body: some View {
         HStack {
             let stars = HStack(spacing: 0) {
-                ForEach(0..<maxRating) { count in
+                ForEach(0..<5) { count in
                     Image(systemName: rating == 0 ? "star" : "star.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -74,7 +75,7 @@ struct RatingView: View {
             
             stars.overlay(
                 GeometryReader { geometry in
-                    let width = rating / CGFloat(maxRating) * geometry.size.width
+                    let width = rating / 5.0 * geometry.size.width
                     ZStack(alignment: .leading) {
                         Rectangle()
                             .frame(width: width)
@@ -86,13 +87,12 @@ struct RatingView: View {
             .frame(maxWidth: 80)
         }
         
-        Text("\(bookViewModel.ratingText)")
+        Text("\(book.ratingText)")
             .font(.subheadline)
     }
 }
 
 struct LoadingIndicatorCell: View {
-    @EnvironmentObject var viewModel: BooksViewModel
     
     var body: some View {
         HStack {
@@ -106,6 +106,6 @@ struct LoadingIndicatorCell: View {
 struct SearchResults_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultsView()
-            .environmentObject(BooksViewModel())
+            .environment(BooksViewModel())
     }
 }

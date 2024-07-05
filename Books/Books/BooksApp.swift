@@ -6,12 +6,12 @@ import BooksModel
 
 @main
 struct BooksApp: App {
-    @StateObject var booksViewModel = BooksViewModel()
+    @State var booksViewModel = BooksViewModel()
     
     var body: some Scene {
         WindowGroup {
             SearchResultsView()
-                .environmentObject(booksViewModel)
+                .environment(booksViewModel)
         }
     }
 }
