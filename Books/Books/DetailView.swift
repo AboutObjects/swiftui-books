@@ -5,14 +5,18 @@ import SwiftUI
 import BooksModel
 
 struct DetailView: View {
-    var book: Book
     @Environment(\.colorScheme) private var colorScheme
+    let darkGradient = RadialGradient(colors: [.black, .brown.opacity(0.2)], center: .center, startRadius: 80, endRadius: 200)
+    let lightGradient = RadialGradient(colors: [.white, .brown.opacity(0.2)], center: .center, startRadius: 80, endRadius: 200)
+
+    var book: Book
     
     var heading: some View {
         VStack {
             LibraryIcon(isInLibrary: book.isInLibrary)
             title
             HStack(alignment: .top, spacing: 12) {
+                Spacer()
                 image
                 VStack(alignment: .leading, spacing: 9) {
                     Text(book.authorName)
@@ -22,13 +26,14 @@ struct DetailView: View {
                         .font(.subheadline)
                     RatingView(book: book)
                 }
+                Spacer()
             }
         }
         .padding()
-        .padding(.horizontal, 30)
-        .background(colorScheme == .dark ? .black : .white)
-        .cornerRadius(20)
+        .padding(.bottom, 6)
+        .background(colorScheme == .dark ? darkGradient : lightGradient)
     }
+    
     var title: some View {
         Text(book.title)
             .font(.title2)
@@ -50,13 +55,7 @@ struct DetailView: View {
     }
         
     var synopsis: some View {
-        ScrollView {
-            Text(book.synopsis)
-                .font(.callout)
-                .lineLimit(.max)
-                .lineSpacing(7)
-                .padding()
-        }
+        WebView(text: book.synopsis)
     }
     
     var addButton: some View {
@@ -86,14 +85,18 @@ struct DetailView: View {
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
-            heading
-            synopsis
+            
+            Group {
+                heading
+                synopsis
+            }
+            .cornerRadius(10)
+            .padding(.horizontal)
+            .padding(.top, 15)
+            
             Spacer()
         }
-        .background(Color.gray.opacity(0.1))
-        .cornerRadius(20)
-        .padding(12)
-        .background(Color.gray.opacity(0.2))
+        .background(.brown.opacity(0.2))
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(.stack)
         .navigationTitle("Details")

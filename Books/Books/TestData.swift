@@ -5,6 +5,7 @@ import Foundation
 import BooksModel
 
 struct TestData {
+    static let queryString = "George Eliot Middlemarch"
     
     static var book: Book {
         books[0]
@@ -14,6 +15,8 @@ struct TestData {
         let data = booksJSON.data(using: .utf8)!
         return try! JSONDecoder().decode([Book].self, from: data)
     }
+    
+    static let synopsis = "George Eliot was the pen-name of Mary Ann Evans, one of the greatest of English novelists of the Victorian era. Her long novel <i>Middlemarch</i>, subtitled <i>A Study of Provincial Life</i>, is generally considered to be her finest work.<br /><br />Published in eight installments between 1871 and 1872, <i>Middlemarch</i> tells the intertwined stories of a variety of people living in the vicinity of the (fictional) midlands town of Middlemarch during the early 1830s, the time of the great Reform Act. The novel is remarkable for its realistic treatment of situation, character and relationships and also demonstrates its author’s accurate knowledge of political issues, medicine, politics, and rural economy. Yet it also includes several touches of humor.<br /><br />The novel’s main characters include: Dorothea Brooke, a religiously-inclined and very intelligent young woman who marries a much older man believing that she can assist him in his scholarly studies; Dr. Tertius Lydgate, a doctor who comes to Middlemarch to further his medical research and implement his ideas for treatment, but whose plans are thrown into disarray by an unwise marriage; Fred Vincy, an idle young man, the son of the town’s Mayor, who gets into a mire of debt; and several others.<br /><br />The initial reception of the novel by critics was mixed, with a number of unfavorable reviews, but its reputation has grown through time and <i>Middlemarch</i> is now generally considered to be one of the best novels ever written in English."
 }
 
 

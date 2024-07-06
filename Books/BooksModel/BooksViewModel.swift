@@ -5,28 +5,29 @@ import UIKit
 import Combine
 import Observation
 
-public extension String
-{
+public extension String {
     var searchTerms: [String] {
         return components(separatedBy: .whitespaces)
     }
 }
 
-@Observable public final class BooksViewModel
-{
+@Observable public final class BooksViewModel {
+    
     public private(set) var books: [Book] = []
     public var isAtEnd = false
     public var isSearching = false
-    public var queryString = "George Eliot Middlemarch"
+    public var queryString = ""
     
     private var query: BooksQuery!
     private let apiClient = APIClient()
     
-    public init() { }
+    public init(queryString: String = "") {
+        self.queryString = queryString
+    }
 }
 
-public extension BooksViewModel
-{
+public extension BooksViewModel {
+    
     private func makeQuery() -> BooksQuery {
         // TODO: Ignore empty or nil search terms
         let terms = queryString.searchTerms
@@ -34,6 +35,7 @@ public extension BooksViewModel
     }
     
     func newSearch() {
+        isSearching = true
         books = []
         search()
     }
@@ -43,22 +45,24 @@ public extension BooksViewModel
         Task {
             // For testing purposes:
             // try await Task.sleep(for: .seconds(1))
+            // ...or use Network Link Conditioner
             
             let fetchedBooks = try await apiClient.execute(query: query)
-            self.books.append(contentsOf: fetchedBooks)
-            self.books.forEach { book in
+            books.append(contentsOf: fetchedBooks)
+            books.forEach { book in
                 Task.detached {
                     let data = try await self.apiClient.fetch(url: book.artworkUrl)
                     book.image = UIImage(data: data)
                 }
             }
-            self.isSearching = false
-            if let query = self.query, self.books.count < query.fetchLimit {
-                self.isAtEnd = true
+            
+            isSearching = false
+            
+            if let query = query {
+                isAtEnd = books.count % query.fetchLimit != 0
             }
         }
     }
-    
     
     func next() {
         search()

@@ -25,6 +25,8 @@
 		B4935A962655894C007B1913 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4935A952655894C007B1913 /* BooksViewModel.swift */; };
 		B49BE2392C38AD8400EABCB1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49BE2382C38AD8400EABCB1 /* DetailView.swift */; };
 		B49BE23C2C38AFD800EABCB1 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49BE23A2C38AFBF00EABCB1 /* TestData.swift */; };
+		B49BE23E2C398BAE00EABCB1 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49BE23D2C398BAE00EABCB1 /* RatingView.swift */; };
+		B49BE2402C3997CE00EABCB1 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49BE23F2C3997CE00EABCB1 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		B4935A952655894C007B1913 /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
 		B49BE2382C38AD8400EABCB1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		B49BE23A2C38AFBF00EABCB1 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		B49BE23D2C398BAE00EABCB1 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		B49BE23F2C3997CE00EABCB1 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 				B44872B72631C2400003680C /* BooksApp.swift */,
 				B44872B92631C2400003680C /* SearchResultsView.swift */,
 				B49BE2382C38AD8400EABCB1 /* DetailView.swift */,
+				B49BE23D2C398BAE00EABCB1 /* RatingView.swift */,
+				B49BE23F2C3997CE00EABCB1 /* WebView.swift */,
 				B4935A9326556828007B1913 /* ActivityIndicator.swift */,
 				B49BE23A2C38AFBF00EABCB1 /* TestData.swift */,
 				B44872BB2631C2420003680C /* Assets.xcassets */,
@@ -330,8 +336,10 @@
 				B44872BA2631C2400003680C /* SearchResultsView.swift in Sources */,
 				B49BE2392C38AD8400EABCB1 /* DetailView.swift in Sources */,
 				B4935A9426556828007B1913 /* ActivityIndicator.swift in Sources */,
+				B49BE23E2C398BAE00EABCB1 /* RatingView.swift in Sources */,
 				B49BE23C2C38AFD800EABCB1 /* TestData.swift in Sources */,
 				B44872B82631C2400003680C /* BooksApp.swift in Sources */,
+				B49BE2402C3997CE00EABCB1 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +511,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Books/Preview Content\"";
-				DEVELOPMENT_TEAM = 7J7LD9SB6Q;
+				DEVELOPMENT_TEAM = QJJFB4XBRT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Books/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -526,7 +534,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Books/Preview Content\"";
-				DEVELOPMENT_TEAM = 7J7LD9SB6Q;
+				DEVELOPMENT_TEAM = QJJFB4XBRT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Books/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -549,7 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7J7LD9SB6Q;
+				DEVELOPMENT_TEAM = QJJFB4XBRT;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -582,7 +590,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7J7LD9SB6Q;
+				DEVELOPMENT_TEAM = QJJFB4XBRT;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
