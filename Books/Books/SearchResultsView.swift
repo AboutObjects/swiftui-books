@@ -5,13 +5,17 @@ import SwiftUI
 import BooksModel
 
 struct SearchResultsView: View {
-    @Environment(BooksViewModel.self) var viewModel
-
+    @Bindable var viewModel: BooksViewModel
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach(viewModel.books, id: \.id) { book in
-                    BookCell(book: book)
+                    NavigationLink {
+                        DetailView(book: book)
+                    } label: {
+                        BookCell(book: book)
+                    }
                 }
                 
                 if !viewModel.isAtEnd {
@@ -20,6 +24,10 @@ struct SearchResultsView: View {
                 }
             }
             .navigationTitle("Book Search")
+            .searchable(text: $viewModel.queryString)
+            .onSubmit(of: .search) {
+                viewModel.newSearch()
+            }
         }
         .font(.title3)
         .lineLimit(1)
@@ -61,6 +69,7 @@ struct BookCell: View {
 struct RatingView: View {
     var book: Book
     var rating: CGFloat { CGFloat(book.rating) }
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         HStack {
@@ -69,7 +78,9 @@ struct RatingView: View {
                     Image(systemName: rating == 0 ? "star" : "star.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(rating == 0 ? .yellow : .white)
+                        .foregroundColor(rating == 0 ? 
+                            .accentColor : colorScheme == .dark ?
+                            .black : .white)
                 }
             }
             
@@ -79,12 +90,12 @@ struct RatingView: View {
                     ZStack(alignment: .leading) {
                         Rectangle()
                             .frame(width: width)
-                            .foregroundColor(.yellow)
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .mask(stars)
             )
-            .frame(maxWidth: 80)
+            .frame(maxWidth: 60)
         }
         
         Text("\(book.ratingText)")
@@ -105,7 +116,10 @@ struct LoadingIndicatorCell: View {
 
 struct SearchResults_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultsView()
-            .environment(BooksViewModel())
+        Group {
+            SearchResultsView(viewModel: BooksViewModel())
+            SearchResultsView(viewModel: BooksViewModel())
+                .preferredColorScheme(.dark)
+        }
     }
 }

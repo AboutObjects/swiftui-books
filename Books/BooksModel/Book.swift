@@ -36,7 +36,8 @@ public struct BookSearchResult: Codable {
     public let detailsUrl: URL
     
     public var image: UIImage?
-
+    public var isInLibrary = false
+    
     private enum CodingKeys: String, CodingKey {
         case id = "trackId"
         case title = "trackCensoredName"

@@ -23,6 +23,8 @@
 		B44872FD263232840003680C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44872FC263232840003680C /* DataStore.swift */; };
 		B4935A9426556828007B1913 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4935A9326556828007B1913 /* ActivityIndicator.swift */; };
 		B4935A962655894C007B1913 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4935A952655894C007B1913 /* BooksViewModel.swift */; };
+		B49BE2392C38AD8400EABCB1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49BE2382C38AD8400EABCB1 /* DetailView.swift */; };
+		B49BE23C2C38AFD800EABCB1 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49BE23A2C38AFBF00EABCB1 /* TestData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		B44872FC263232840003680C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B4935A9326556828007B1913 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		B4935A952655894C007B1913 /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		B49BE2382C38AD8400EABCB1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		B49BE23A2C38AFBF00EABCB1 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +141,9 @@
 			children = (
 				B44872B72631C2400003680C /* BooksApp.swift */,
 				B44872B92631C2400003680C /* SearchResultsView.swift */,
+				B49BE2382C38AD8400EABCB1 /* DetailView.swift */,
 				B4935A9326556828007B1913 /* ActivityIndicator.swift */,
+				B49BE23A2C38AFBF00EABCB1 /* TestData.swift */,
 				B44872BB2631C2420003680C /* Assets.xcassets */,
 				B44872C02631C2420003680C /* Info.plist */,
 				B44872BD2631C2420003680C /* Preview Content */,
@@ -322,7 +328,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44872BA2631C2400003680C /* SearchResultsView.swift in Sources */,
+				B49BE2392C38AD8400EABCB1 /* DetailView.swift in Sources */,
 				B4935A9426556828007B1913 /* ActivityIndicator.swift in Sources */,
+				B49BE23C2C38AFD800EABCB1 /* TestData.swift in Sources */,
 				B44872B82631C2400003680C /* BooksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

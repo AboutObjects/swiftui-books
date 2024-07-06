@@ -17,7 +17,7 @@ public extension String
     public private(set) var books: [Book] = []
     public var isAtEnd = false
     public var isSearching = false
-    public var queryString: String?
+    public var queryString = "George Eliot Middlemarch"
     
     private var query: BooksQuery!
     private let apiClient = APIClient()
@@ -29,8 +29,13 @@ public extension BooksViewModel
 {
     private func makeQuery() -> BooksQuery {
         // TODO: Ignore empty or nil search terms
-        let terms = queryString?.searchTerms ?? [ "George", "Eliot", "Middlemarch" ]
+        let terms = queryString.searchTerms
         return BooksQuery(searchTerms: terms, offset: books.count)
+    }
+    
+    func newSearch() {
+        books = []
+        search()
     }
     
     func search() {
@@ -53,7 +58,6 @@ public extension BooksViewModel
             }
         }
     }
-    
     
     
     func next() {
