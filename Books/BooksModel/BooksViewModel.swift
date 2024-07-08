@@ -50,7 +50,7 @@ public extension BooksViewModel {
             let fetchedBooks = try await apiClient.execute(query: query)
             books.append(contentsOf: fetchedBooks)
             books.forEach { book in
-                Task.detached {
+                Task {
                     let data = try await self.apiClient.fetch(url: book.artworkUrl)
                     book.image = UIImage(data: data)
                 }
