@@ -6,11 +6,10 @@ import BooksModel
 
 @main
 struct BooksApp: App {
-    @State var booksViewModel = BooksViewModel()
     
     var body: some Scene {
         WindowGroup {
-            SearchResultsView(viewModel: booksViewModel)
+            MainTabBar()
         }
     }
     
@@ -21,6 +20,24 @@ struct BooksApp: App {
     }
 }
 
+struct MainTabBar: View {
+    @State var viewModel = BooksViewModel()
+
+    var body: some View {
+        TabView {
+            SearchResultsView(viewModel: viewModel)
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
+            BookmarksView(viewModel: viewModel)
+                .tabItem {
+                    Image(systemName: "bookmark")
+                    Text("Bookmarks")
+                }
+        }
+    }
+}
 
 // MARK: - Global Appearance Configuration
 extension BooksApp {
@@ -71,4 +88,8 @@ extension UIFont {
     static func zapfino(size: CGFloat) -> UIFont {
         return UIFont(name: "Zapfino", size: size) ?? UIFont.boldSystemFont(ofSize: size)
     }
+}
+
+#Preview {
+    MainTabBar()
 }

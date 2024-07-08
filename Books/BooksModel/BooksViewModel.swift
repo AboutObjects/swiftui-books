@@ -14,6 +14,10 @@ public extension String {
 @Observable public final class BooksViewModel {
     
     public private(set) var books: [Book] = []
+    public var bookmarkedBooks: [Book] {
+        books.filter { $0.isBookmarked }
+    }
+    
     public var isAtEnd = false
     public var isSearching = false
     public var queryString = ""

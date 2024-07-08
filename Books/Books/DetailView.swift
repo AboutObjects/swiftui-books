@@ -11,9 +11,9 @@ struct DetailView: View {
 
     var book: Book
     
-    var heading: some View {
+    private var heading: some View {
         VStack {
-            LibraryIcon(isInLibrary: book.isInLibrary)
+//            LibraryIcon(isInLibrary: book.isBookmarked)
             title
             HStack(alignment: .top, spacing: 12) {
                 Spacer()
@@ -34,7 +34,7 @@ struct DetailView: View {
         .background(colorScheme == .dark ? darkGradient : lightGradient)
     }
     
-    var title: some View {
+    private var title: some View {
         Text(book.title)
             .font(.title2)
             .multilineTextAlignment(.center)
@@ -43,7 +43,7 @@ struct DetailView: View {
             .padding(.vertical, 1)
     }
     
-    var image: some View {
+    private var image: some View {
         AsyncImage(url: book.artworkUrl) { image in
             image
                 .resizable()
@@ -54,32 +54,22 @@ struct DetailView: View {
         }
     }
         
-    var synopsis: some View {
+    private var synopsis: some View {
         WebView(text: book.synopsis)
     }
     
-    var addButton: some View {
-        Button(
-            action: { addToLibrary() },
-            label: {
-                Image(systemName: "plus.circle.fill")
-                    .symbolRenderingMode(.multicolor)
-                    .font(.system(size: 20))
-            })
-        .disabled(book.isInLibrary)
-        .opacity(book.isInLibrary ? 0.4 : 1.0)
+    private var bookmarkSymbolName: String {
+        "bookmark" + (book.isBookmarked ? ".fill" : "")
     }
     
-    var removeButton: some View {
+    private var bookmarkButton: some View {
         Button(
-            action: { removeFromLibrary() },
+            action: {
+                book.isBookmarked ? removeFromBookmarks() : addToBookmarks()
+            },
             label: {
-                Image(systemName: "minus.circle.fill")
-                    .symbolRenderingMode(.multicolor)
-                    .font(.system(size: 20))
+                Image(systemName: bookmarkSymbolName)
             })
-        .disabled(!book.isInLibrary)
-        .opacity(book.isInLibrary ? 1.0 : 0.4)
     }
     
     var body: some View {
@@ -102,8 +92,7 @@ struct DetailView: View {
         .navigationTitle("Details")
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
-                removeButton
-                addButton
+                bookmarkButton
             }
         }
     }
@@ -111,31 +100,21 @@ struct DetailView: View {
 
 extension DetailView {
     
-    private func addToLibrary() {
+    private func addToBookmarks() {
+        book.isBookmarked = true
 //        Task {
-//            try await viewModel.addBookToLibrary()
+//            try await viewModel.addToBookmarks()
 //        }
     }
     
-    private func removeFromLibrary() {
+    private func removeFromBookmarks() {
+        book.isBookmarked = false
 //        Task {
-//            try await viewModel.removeBookFromLibrary()
+//            try await viewModel.removeFromBookmarks()
 //        }
     }
 }
 
-struct LibraryIcon: View {
-    let isInLibrary: Bool
-    
-    var body: some View {
-        Image(systemName: "books.vertical" + (isInLibrary ? ".fill" : ""))
-            .imageScale(.large)
-            .font(.system(size: 18))
-            .opacity(isInLibrary ? 1.0 : 0.3)
-            .padding(.top, 3)
-            .foregroundColor(.brown)
-    }
-}
 struct DetailView_Previews: PreviewProvider {
     static let book = TestData.book
     
